@@ -1,4 +1,4 @@
-const { calculateTip, fahrenheitToCelsis, celsiusToFahrenheit } = require('../src/math')
+const { calculateTip, fahrenheitToCelsis, celsiusToFahrenheit, add } = require('../src/math')
 
 //Assertion library. Set of functions and methods to use to assert things 
 //about values
@@ -20,4 +20,23 @@ test('Should convert 32 F  to 0 C', () => {
 test('Should convert 0C to 32 F', () => {
     const fahrenheit = celsiusToFahrenheit(0)
     expect(fahrenheit).toBe(32)
+})
+
+// test('Async test demo', (done) => {
+//     setTimeout(() => {
+//         expect(1).toBe(2)
+//         done()
+//     }, 2000)
+// })
+
+test('Should add two numbers', (done) => {
+    add(2, 3).then((sum) => {
+        expect(sum).toBe(5)
+        done()
+    })
+})
+
+test('Should add two numbers async/await', async () => {
+    const sum = await add(10, 22)
+    expect(sum).toBe(32)  
 })
